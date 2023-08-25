@@ -27,11 +27,15 @@ exports.createLogin = async (req, res) => {
 
     if (user) {
       // User exists, create a JWT token
-      const token = jwt.sign({ userId: user._id }, "mac_123@lavesh", {
-        expiresIn: "1h",
-      });
+      const token = jwt.sign(
+        { userId: user._id, email: user.email },
+        "mac_123@lavesh",
+        {
+          expiresIn: "1h",
+        }
+      );
       console.log("aPI CALLED");
-      res.cookie(`Cookie token name`, `encrypted cookie string Value`);
+      // res.cookie(`Cookie token name`, `encrypted cookie string Value`);
       console.log("tokkkken", token);
 
       // cookie
