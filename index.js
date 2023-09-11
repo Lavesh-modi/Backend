@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const multer = require ("multer")
 
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
