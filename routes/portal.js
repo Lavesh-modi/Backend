@@ -27,6 +27,10 @@ let upload = multer({
   storage: Storage,
 });
 
+
+
+
+
 const { createCards } = require("../controllers/createCards");
 const { updateCards } = require("../controllers/updateCards");
 const { getCards, getCardsId } = require("../controllers/getCards");
@@ -46,5 +50,12 @@ router.delete("/deleteCards/:id", deleteCards);
 router.post("/createLogin", createLogin);
 router.get("/deleteCookies", deleteCookies);
 router.post("/uploadImages", upload.single("user"), uploadImages); //uploadimages
+
+
+// router.post("/upload", upload.single("user"), async (req, res) => {
+//   if (req.file === undefined) return res.send("you must select a file.");
+//   const imgUrl = `http://localhost:5080/upload/${req.file.filename}`;
+//   return res.send(imgUrl);
+// });
 
 module.exports = router;

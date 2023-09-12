@@ -28,6 +28,11 @@ const cardsSchema = new mongoose.Schema({
     required: true,
     default: Date.now(),
   },
+  // myFile :{
+  //   type:String,
+  //   required:true,
+  //   default:Date.now(),
+  // }
 });
 
 module.exports = mongoose.model("Cards", cardsSchema);

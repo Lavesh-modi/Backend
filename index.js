@@ -3,8 +3,8 @@ const app = express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const multer = require ("multer")
-
+const multer = require ("multer");
+const Grid = require("gridfs-stream");
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 app.use(cookieParser());
@@ -26,3 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/", jobRoutes);
+
+
+
+
