@@ -16,7 +16,11 @@ const cardsSchema = new mongoose.Schema({
     required: true,
     maxLength: 500,
   },
-
+  Image: {
+    type: String,
+    required: true,
+    maxLength: 50,
+  },
 
   createdAt: {
     type: Date,
