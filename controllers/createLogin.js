@@ -168,9 +168,12 @@
 // };
 
 const login = require("../models/login");
+
+//jwt has been imported in it
 const jwt = require("jsonwebtoken");
 
 exports.createLogin = async (req, res) => {
+  
   try {
     const { email, password } = req.body;
 
@@ -189,15 +192,14 @@ exports.createLogin = async (req, res) => {
       // Password is incorrect
 
       return res.json({ exists: false });
-    
     }
 
     // User exists and password is valid, create a JWT token
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      "mac_123@lavesh",
+      process.env.SECEERET_KEY,
       {
-        expiresIn: "1h",
+       expiresIn: process.env.EXPIRE_TIME,
       }
     );
     console.log("api called");

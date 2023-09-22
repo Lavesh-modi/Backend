@@ -3,18 +3,19 @@ const Cards = require("../models/cards");
 exports.createCards = async (req, res) => {
   // console.log(createCards)
 
-
   try {
-    const { Role, name, About, Image } = req.body;
+    console.log(req, "req.body ");
+    // const { Role, name, About, Image } = req.body;
 
-    const imageName = Image.name 
+    // const imageName = Image
+    // console.log(Image , "frontend image ")
 
-    console.log(req.body);
-    const response = await Cards.create({ Role, name, About, imageName });
+    // console.log(req.body);
+    // const response = await Cards.create({ Role, name, About, imageName });
 
     res.status(200).json({
       success: true,
-      data: response,
+      data: "response",
       message: "Entry Created Successfully",
     });
   } catch (err) {
