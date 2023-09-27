@@ -15,7 +15,16 @@ app.use(cors());
 const jobRoutes = require("./routes/portal");
 
 app.use(express.static("images"));
+app.use((req, res, next) => {
+  const authorizationHeader = req.headers.authorization;
 
+  // You can now use the authorizationHeader in this middleware
+  console.log('Authorization Header:', authorizationHeader);
+
+  // Pass the authorizationHeader to the next middleware or route handler
+  req.authorizationHeader = authorizationHeader;
+  next();
+});
 // added a new
 // const __dirname = path.resolve()
 // app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

@@ -173,9 +173,18 @@ const login = require("../models/login");
 const jwt = require("jsonwebtoken");
 
 exports.createLogin = async (req, res) => {
-  
   try {
     const { email, password } = req.body;
+
+    const authorizationHeader = req.headers.authorization; // Assuming req.headers.authorization contains the header value
+
+    if (authorizationHeader) {
+      const token = authorizationHeader.split(" ")[1]; // Split the header value by space and take the second part
+      console.log(token, "token");
+    } else {
+      // Handle the case where there is no authorization header
+      console.log("Authorization header is missing");
+    }
 
     // Check if the user with the given email exists in the database
     const user = await login.findOne({ email });
@@ -199,7 +208,7 @@ exports.createLogin = async (req, res) => {
       { userId: user._id, email: user.email },
       process.env.SECEERET_KEY,
       {
-       expiresIn: process.env.EXPIRE_TIME,
+        expiresIn: process.env.EXPIRE_TIME,
       }
     );
     console.log("api called");
