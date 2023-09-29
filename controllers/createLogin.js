@@ -190,7 +190,7 @@ exports.createLogin = async (req, res) => {
     const user = await login.findOne({ email });
 
     if (!user) {
-      // User does not exist
+      // User does not exist  
       return res.json({ exists: false });
     }
 

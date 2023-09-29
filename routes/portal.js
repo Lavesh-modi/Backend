@@ -27,7 +27,7 @@ let Storage = multer.diskStorage({
 let upload = multer({
   storage: Storage,
 });
-
+const {admin}= require("../controllers/admin")
 const { createCards } = require("../controllers/createCards");
 const { updateCards } = require("../controllers/updateCards");
 const { getCards, getCardsId } = require("../controllers/getCards");
@@ -38,6 +38,8 @@ const { createLogin } = require("../controllers/createLogin");
 const { uploadImages } = require("../controllers/uploadImages");
 const { deleteCookies } = require("../controllers/deleteCookies");
 
+
+router.put("/admin",admin);// for sign up 
 router.post("/createCards", withAuth, createCards);
 router.put("/updateCards/:id", withAuth, updateCards);
 router.get("/getCards", getCards); // getting all the data

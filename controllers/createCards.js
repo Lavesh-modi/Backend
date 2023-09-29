@@ -5,13 +5,13 @@ exports.createCards = async (req, res) => {
 
   try {
     console.log(req, "req.body ");
-    // const { Role, name, About, Image } = req.body;
+    const { Role, name, About } = req.body;
 
     // const imageName = Image
     // console.log(Image , "frontend image ")
 
     // console.log(req.body);
-    // const response = await Cards.create({ Role, name, About, imageName });
+    const response = await Cards.create({ Role, name, About });
 
     res.status(200).json({
       success: true,
